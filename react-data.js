@@ -45,7 +45,7 @@ export const useData = ({
   }
 
   // is findOne? so no fetch
-  return { data: result.fetch ? result.fetch() : result };
+  return { data: result?.fetch ? result.fetch() : result };
 };
 
 const methodCall = async (methodName, arg, { openAlert } = {}) =>
