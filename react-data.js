@@ -1,6 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { useFind, useSubscribe } from 'meteor/react-meteor-data';
-import { useAlert } from 'meteor/quave:alert-react-tailwind';
 import { EXPECTED_ERROR } from './common';
 
 let expectedErrorReason = 'Unknown error';
@@ -56,7 +55,7 @@ const methodCall = async (methodName, arg, { openAlert } = {}) =>
     };
     Meteor.call(methodName, argWithLanguage, (error, result) => {
       if (error) {
-        if (error.error === EXPECTED_ERROR) {
+        if (openAlert && error.error === EXPECTED_ERROR) {
           openAlert(error.reason || expectedErrorReason);
         }
         reject(error);
@@ -66,8 +65,7 @@ const methodCall = async (methodName, arg, { openAlert } = {}) =>
     });
   });
 
-export const useMethod = () => {
-  const { openAlert } = useAlert();
+export const useMethod = ({ openAlert } = {}) => {
   return {
     async method(name, arg) {
       return methodCall(name, arg, { openAlert });

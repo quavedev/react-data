@@ -1,5 +1,16 @@
 # Changelog
 
+# 4.0.0 (2023-05-20)
+
+## BREAKING CHANGES
+
+- Removes EXPECTED_ERROR_SERVER from server
+- Removes quave:alert-react-tailwind dependency, so if you want to still have an alert you need to provide a function `openAlert` to `useMethod` as prop:
+- 
+```js
+useMethod({ openAlert: (alertMessage) => openYourCustomAlert(alertMessage) })
+```
+
 ## 3.0.0 (2023-01-20)
 
 - Upgrades to `quave:alert-react-tailwind` 3.0.0 which upgrades `@heroicons/react` to 2. As all the icons locations were changed this is a breaking change.
