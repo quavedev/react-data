@@ -1,5 +1,7 @@
 # quave:react-data
 
+MIGRATED TO https://github.com/quavedev/meteor-packages/tree/main/react-data
+
 `quave:react-data` is a Meteor package that allows you to subscribe to publications and also call methods.
 
 Features
